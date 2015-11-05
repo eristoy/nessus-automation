@@ -31,13 +31,18 @@ use POSIX;
 use Getopt::Std;
 use File::Copy;
 use File::HomeDir;
+use Config::Simple;
+
+
+
 # Self signed cert fix
 BEGIN { $ENV{PERL_LWP_SSL_VERIFY_HOSTNAME} = 0 }
 
 # config var
-my $baseurl     = 'https://192.168.170.155:8834/';
-my $user        = 'nessus-rpt-svc';
-my $pass        = '';
+my $cfg = new Config::Simple('nes.cfg');
+my $baseurl     = $cfg->param('NURL');
+my $user        = $cfg->param('NUser');
+my $pass        = $cfg->param('NPass');;
 my $date        = today();
 my $home        = File::HomeDir->my_home;
 my $format;
@@ -232,10 +237,10 @@ sub get_scan_download {
     close FILE;
 }
 sub do_move {
-    my $user = "";
-    my $pass = "";
-    my $host = "";
-    my $domain  = "";
+    my $user = $cfg->param('SMUser');
+    my $pass = $cfg->param('SMPass');
+    my $host = $cfg->param('SMHost');
+    my $domain  = $cfg->param('SMDom');
     my $file = $_[0];
     my $src = "$home/nessus/data/$file";
     my $mnt = "/$home/nessus/clt-fs";
