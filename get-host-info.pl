@@ -11,7 +11,7 @@
 # REQUIREMENTS: ---
 #         BUGS: ---
 #        NOTES: ---
-#       AUTHOR: Eric Stoycon (es), eric.stoycon@cgcginc.com
+#       AUTHOR: Eric Stoycon (es), estoycon@gmail.com
 # ORGANIZATION: 
 #      VERSION: 1.0
 #      CREATED: 11/04/2015 03:19:52 PM
